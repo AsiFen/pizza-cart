@@ -13,33 +13,38 @@
     --grey-color-1: #f8f8f8;
     --white-color: #fff;
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  *,
-  *::after,
-  *::before {
+}
+
+*,
+*::after,
+*::before {
     box-sizing: inherit;
     margin: 0;
     padding: 0;
     border: none;
     outline: none;
-  }
-  
-  html {
+}
+
+html {
     font-size: 62.5%;
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     font-family: "Poppins", sans-serif;
     font-size: 1.6rem;
     font-weight: 400;
     color: var(--default-color);
-  }
+}
 
 
-label{
-padding-right: 1em;
+label {
+    padding-right: 1em;
+}
+
+input {
+    border-radius: 20px;
+    background-color: rgb(245, 245, 245);
 }
 
 .label {

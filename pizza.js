@@ -7,7 +7,8 @@ function PizzaCart() {
         buy: false,
 
         closePayBtn: false,
-        showMessage: '',
+      messageError: '',
+      messageSuccess: '',
         showPayement: false,
         
         smallCount: 0,
@@ -45,12 +46,12 @@ function PizzaCart() {
         enoughToPay() {
             if (this.inputValue != '') {
                 if (this.inputValue > this.grandTotal()) {
-                    this.showMessage = 'Payment success!! :) '
+                    this.messageError = 'Payment success!! :) '
                     this.inputValue = 0
                     closePayBtn = true
                 }
                 else {
-                    this.showMessage = 'Sorry - not enough money!'
+                    this.messageSuccess = 'Sorry - not enough money!'
                 }
             }
         },
