@@ -84,11 +84,11 @@
                 <br>
                 <!-- need to used innit here to load JS where i get the input value  
 need to use the if statement inorder to say if  -->
-                <span x-text="showMessage">message goes here</span>
-                
-                <div x-show="showPayement"><label for="">total</label> <input type="number" x-model="inputValue">
-                    
+                <span x-text="showMessage" class="showmessage">message goes here</span>
+                <br>
+                <div x-show="showPayement"><label for="">total</label> <input type="number" x-model="inputValue">  
                 </div>
+                <br>
                 <button
                     class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded"
                     x-ref="sentence"
@@ -108,8 +108,8 @@ need to use the if statement inorder to say if  -->
 
                     </div>
                     <button
-                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded smallbtn"
-                        @click="buy=true; increment('small')">Buy</button>
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded smallbtn btn"
+                        @click="buy=true">Buy</button>
                 </div>
 
                 <div class="pizza medium">
@@ -121,7 +121,7 @@ need to use the if statement inorder to say if  -->
                         iure
                     </div>
                     <button
-                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded medBtn"
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded medBtn btn"
                         @click="buy=true; increment('med')">Buy</button>
                 </div>
 
@@ -135,7 +135,7 @@ need to use the if statement inorder to say if  -->
 
                     </div>
                     <button
-                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded lrgBtn"
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded lrgBtn btn"
                         @click="buy=true; increment('large')">Buy</button>
                 </div>
             </div>
@@ -147,7 +147,7 @@ need to use the if statement inorder to say if  -->
     </script>
 
     <script src="./pizza.js"></script>
-    <script src="./index.js"></script>
+    <!-- <script src="./index.js"></script> -->
 
 </body>
 

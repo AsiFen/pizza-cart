@@ -38,7 +38,8 @@ body {
 }
 
 button {
-margin-top: 0.5em;}
+    margin-top: 0.5em;
+}
 
 label {
     padding-right: 1em;
@@ -47,6 +48,27 @@ label {
 input {
     border-radius: 20px;
     background-color: rgb(245, 245, 245);
+}
+
+.messageError {
+    border: rgb(65, 1, 1) 1px solid;
+    border-radius: 5px;
+    background-color: rgb(240, 184, 182);
+    color: rgb(240, 29, 29);
+}
+
+.messageSuccess {
+    border: rgb(25, 105, 1) 1px solid;
+    border-radius: 5px;
+    padding: 0.4em;
+    background-color: rgb(154, 235, 154);
+    color: rgb(81, 240, 81);
+}
+
+.crement {
+    float: right;
+    width: 40%;
+    flex-direction: column;
 }
 
 .label {
@@ -61,6 +83,9 @@ input {
     border-radius: 1em;
 }
 
+.pizzas {
+    flex-direction: column;
+}
 
 .medium {
     background-color: #E55934;
@@ -79,8 +104,15 @@ input {
     background-color: #9BC53D;
 }
 
-@media (min-width: 960px) {
+.pizzas {
+    display: flex;
+}
+@media (max-width: 560px) {
     .pizzas {
-        display: flex;
+        flex-direction: column;
+    }  
+    .crement{
+        float: none;
+        width: auto;
     }
 }

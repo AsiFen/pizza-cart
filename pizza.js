@@ -1,3 +1,4 @@
+var showmessage = document.querySelector('.showmessage')
 function PizzaCart() {
     return {
         smallPrice: 29.99,
@@ -7,8 +8,9 @@ function PizzaCart() {
         buy: false,
 
         closePayBtn: false,
-      messageError: '',
-      messageSuccess: '',
+    //   messageError: '',
+    //   messageSuccess: '',
+    showMessage: '',
         showPayement: false,
         
         smallCount: 0,
@@ -46,12 +48,18 @@ function PizzaCart() {
         enoughToPay() {
             if (this.inputValue != '') {
                 if (this.inputValue > this.grandTotal()) {
-                    this.messageError = 'Payment success!! :) '
+                    this.showMessage = 'Payment success!! :)'
+                    showmessage.classList.remove('messageError')
+                    showmessage.classList.add('messageSuccess')
+
                     this.inputValue = 0
                     closePayBtn = true
                 }
                 else {
-                    this.messageSuccess = 'Sorry - not enough money!'
+                    this.showMessage = 'Sorry - not enough money!'
+                    showmessage.classList.remove('messageSuccess')
+                    showmessage.classList.add('messageError')
+
                 }
             }
         },
