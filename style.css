@@ -37,6 +37,8 @@ body {
     color: var(--default-color);
 }
 
+button {
+margin-top: 0.5em;}
 
 label {
     padding-right: 1em;

@@ -19,7 +19,7 @@ function PizzaCart() {
 
         increment(sizeOfPizza) {
             const occur = `${sizeOfPizza}Count`
-            if (sizeOfPizza) {
+            if (sizeOfPizza && this.buy == true) {
                 this[occur]++
             }
         },
