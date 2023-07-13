@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <title> Pizza Cart</title>
+</head>
+
+<body>
+    <nav
+    class="relative flex w-full flex-wrap items-center justify-between bg-neutral-100 py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:py-4">
+    <div class=w-full  items-center px-3">
+            <h3 class="mb-2 mt-0 text-3xl font-medium leading-tight text-center text-primary">
+                Perfect Pizza</h3>
+            <div class="relative items-center">
+                <!-- <span
+                class="ml-3 rounded-md bg-danger px-[0.85em] py-[0.6em] text-[0.6rem] font-bold leading-none text-white">1</span> -->
+                <!-- Cart Icon -->
+                <!-- <a class="ml-1 text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+                href="#">
+                <span class="[&>svg]:w-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                        <path
+                        d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
+                    </svg>
+                </span>
+            </a> -->
+        </div>
+    </div>
+    </nav>
+    <div x-data="pizzaCart">
+
+
+        <div class="crement">
+            <h6 class="mb-2 mt-10 text-base font-medium leading-tight text-center text-primary ">
+                Your Cart</h6>
+            <!-- x-data -->
+            <div class="label">
+                <div>
+                    <label for="">SML Pizza </label>
+                    <button
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded plusSmall"
+                        @click="increment('small')">+</button>
+                    <button
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded minusSmall"
+                        @click="decrement('small')">-</button>R
+                    <strong x-text="total('small').toFixed(2)"></strong>
+                </div>
+                <br>
+                <div>
+                    <label for="">MED Pizza </label>
+                    <button
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded plusMed"
+                        @click="increment('med')">+</button>
+                    <button
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded minusMed"
+                        @click="decrement('med')"> - </button>R
+                    <strong x-text="total('med').toFixed(2)"></strong>
+                </div>
+                <br>
+
+                <div>
+                    <label for="">LRG Pizza </label>
+                    <button
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded plusLarge"
+                        @click="increment('large')"> +</button>
+                    <button
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded minusLarger"
+                        @click="decrement('large')"> -</button>R
+                    <strong x-text="total('large').toFixed(2)"></strong>
+
+                </div>
+                <br>
+                <div>
+                    total amount: <span>R<strong x-text="grandTotal()"></strong></span>
+                </div>
+                <br>
+                <!-- need to used innit here to load JS where i get the input value  
+need to use the if statement inorder to say if  -->
+                <span x-text="showMessage">message goes here</span>
+                <div x-show="showPayement"><label for="">total</label> <input type="number" x-model="inputValue">
+                </div>
+                <button
+                    class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded"
+                    x-ref="sentence"
+                    @click="$refs.sentence.innerText = 'Pay'; showPayement = true; enoughToPay(); ">checkout</button>
+            </div>
+        </div>
+
+        <div class="buy">
+            <div class="pizzas">
+                <div class="pizza small">
+                    <h2>Small Pizza</h2>
+                    <img src="pizza1.png" width=80>
+                    <h4 class="price"> R29.99 </h4>
+                    <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, commodi, dolorum, a
+                        possimus
+                        iure
+
+                    </div>
+                    <button
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded smallbtn"
+                        @click="increment('small')">Buy</button>
+                </div>
+
+                <div class="pizza medium">
+                    <h2>Medium Pizza</h2>
+                    <img src="pizza1.png" width=80>
+                    <h4 class="price"> R49.99 </h4>
+                    <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, commodi, dolorum, a
+                        possimus
+                        iure
+
+                    </div>
+                    <button
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded medBtn"
+                        @click="increment('med')">Buy</button>
+                </div>
+
+                <div class="pizza large">
+                    <h2>Large Pizza</h2>
+                    <img src="pizza1.png" width=80>
+                    <h4 class="price"> R89.99</h4>
+                    <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, commodi, dolorum, a
+                        possimus
+                        iure
+
+                    </div>
+                    <button
+                        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded lrgBtn"
+                        @click="increment('large')">Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+    </script>
+
+    <script src="./pizza.js"></script>
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
